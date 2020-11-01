@@ -9,28 +9,25 @@
 using namespace std;
 
 int main(){
-    int col1[MAX];
-    double col2[MAX];
-    int num_lines=0;
-
-    //Input from the file
+    //Open the input file
     ifstream input("data.txt");
     if (!input.is_open()) {
         cerr << "Cannot open file" << endl;
         exit(1);
     }
+
+    //Input and Output
+    cout << setfill('-') << setw(21) << '+' << setw(21) << '+' << setw(21) << ' ' << endl;
+    int count = 0;
     while( !input.eof() ){
-        input >> col1[num_lines] >> col2[num_lines];
-        num_lines++;
+        int field1; 
+        double field2;
+        input >> field1 >> field2;
+        count++;
+        cout << setfill(' ') << setw(19) << count << " |" << setw(19) << field1 << " |"
+        << setw(20) << field2 << endl;
     }
     input.close();
-
-    //std output
-    cout << setfill('-') << setw(21) << '+' << setw(21) << '+' << setw(21) << ' ' << endl;
-    for(int i=0; i < num_lines; i++){
-        cout << setfill(' ') << setw(19) << i+1 << " |" << setw(19) << col1[i] << " |"
-        << setw(20) << col2[i] << endl;
-    }
 
     return 0;
 }
