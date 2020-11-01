@@ -4,8 +4,6 @@
 #include <fstream>
 #include <iomanip>
 
-#define MAX 100
-
 using namespace std;
 
 int main(){
