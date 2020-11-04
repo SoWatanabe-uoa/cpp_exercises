@@ -3,7 +3,7 @@
 
 class Point2D{
     public:
-    Point2D(float,float);
+    Point2D(float x=0.0f,float y=0.0f);
 
     float get_x() const;
     float get_y() const;

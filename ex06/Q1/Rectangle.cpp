@@ -11,6 +11,6 @@ float Rectangle::compute_area() const {
 }
 
 void Rectangle::translate(float tx, float ty) {
-    left_corner.set_x(tx);
-    left_corner.set_y(ty);
+    left_corner.set_x(left_corner.get_x() + tx);
+    left_corner.set_y(left_corner.get_y() + ty);
 }
