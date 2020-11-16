@@ -15,12 +15,12 @@ int main(void) {
 
     C2 += B2;
     C2 -= A2;
-    assert(C2(0,0) == 1.0);
-    assert(C2(1,1) == 7.0);
+    assert(C2(0,0) == 1);
+    assert(C2(1,1) == 7);
     
     SquareMatrix<int,2> D2 = -A2;
-    assert(D2(0,0) == -1.0);
-    assert(D2(1,1) == -1.0);
+    assert(D2(0,0) == -1);
+    assert(D2(1,1) == -1);
 
 
     //Tests for double type and 3 dimensions
