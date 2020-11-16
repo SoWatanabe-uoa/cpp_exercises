@@ -18,7 +18,8 @@ class SquareMatrix {
     const SquareMatrix operator-();
     T& operator() (int, int);
     bool operator== (const SquareMatrix&) const;
-    //friend ostream& operator<<<T,N> (ostream&, const SquareMatrix&);
+    template<typename U, int M> 
+    friend ostream& operator<< (ostream&, const SquareMatrix<U,M>&);
 
     T entries[N][N];
 };
@@ -97,7 +98,6 @@ bool SquareMatrix<T,N>::operator== (const SquareMatrix& other) const {
     return equal_flag;
 }
 
-/*
 template <typename T, int N>
 ostream& operator<< (ostream& os, const SquareMatrix<T,N>& m) {
     for (int i=0; i<N; ++i) {
@@ -108,7 +108,6 @@ ostream& operator<< (ostream& os, const SquareMatrix<T,N>& m) {
     }
     return os;
 }
-*/
 
 template <typename T, int N>
 const SquareMatrix<T,N> operator+(const SquareMatrix<T,N>& m1,const SquareMatrix<T,N>& m2){

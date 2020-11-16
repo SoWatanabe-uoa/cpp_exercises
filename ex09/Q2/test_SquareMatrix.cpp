@@ -22,6 +22,8 @@ int main(void) {
     assert(D2(0,0) == -1);
     assert(D2(1,1) == -1);
 
+    cout << C2 << endl;
+
 
     //Tests for double type and 3 dimensions
     SquareMatrix<double,3> A3; // A3 = I
@@ -41,6 +43,9 @@ int main(void) {
     assert(D3(0,0) == -1.0);
     assert(D3(1,1) == -1.0);
     assert(D3(2,2) == -1.0);
+    
+    cout << C3 << endl;
+
 
     cout << "Tests passed" << endl;
 
