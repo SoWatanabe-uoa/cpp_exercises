@@ -18,18 +18,28 @@ class Compare{
     }
 };
 
-const vector<Point> find_k_closest(const int& k, const vector<Point>& points){
-    priority_queue<Point,vector<Point>, Compare > pq;
-    vector<Point>::const_iterator cvit;
-    for (cvit = points.cbegin(); cvit != points.cend(); ++cvit){
-        pq.push(*cvit);
-    }
-    vector<Point> result;
-    for (cvit = result.cbegin(); cvit != result.cbegin() + k; ++cvit){
-        result.push_back(pq.top());
+const vector<Point> find_k_closest(const int& k, const vector<Point>& pts) {
+  priority_queue<Point,vector<Point>, Compare > pq;
+  Compare comp;
+  for (auto it = pts.begin(); it != pts.end(); ++it) {
+    if(pq.size() < k) {
+      pq.push(*it);
+    } else {
+      if (comp(*it, pq.top())) {
         pq.pop();
+	    pq.push(*it);
+      }
     }
-    return result;
+  }
+
+  vector<Point> result;
+  for (unsigned int i = 0; i < k; ++i) {
+    if (!pq.empty()) {
+      result.push_back(pq.top());
+      pq.pop();
+    }
+  }
+ return result;
 }
 
 int main(void) {
@@ -42,9 +52,9 @@ int main(void) {
     points.push_back(Point(2.0,2.0,1.0));
 
     vector<Point> closest = find_k_closest(3, points);
-    /*for (size_t i = 0; i < 3; ++i) {
+    for (size_t i = 0; i < 3; ++i) {
     cout << closest[i].x << "," << closest[i].y << "," 
                 << closest[i].z << endl;
-    }*/
+    }
 
 }
