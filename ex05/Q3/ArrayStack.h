@@ -50,12 +50,15 @@ class ArrayStack {
     }
 
     // Assignment operator
-    ArrayStack& operator= (const ArrayStack& stack){
+    ArrayStack& operator= (const ArrayStack& stack){  
         std::cout << "Assignment Operator" << std::endl;
         if(this == &stack) return *this;  //Self assignment
-        _num_items = stack._num_items;
         delete[] _items;
+        _num_items = stack._num_items;
         _items = new int[stack._allocated_size];
+        for(int i=0; i < stack._num_items; i++){
+               _items[i] = stack._items[i];
+        }
         _allocated_size = stack._allocated_size;
         return *this;
     }
@@ -63,21 +66,27 @@ class ArrayStack {
     // Move constructor
     ArrayStack(ArrayStack&& another_ArrayStack) :
     _num_items(another_ArrayStack._num_items),
-    _items(new int[another_ArrayStack._allocated_size]),
+    _items(another_ArrayStack._items),
     _allocated_size(another_ArrayStack._allocated_size)
     {
-        for(int i=0; i < another_ArrayStack._num_items; i++) _items[i] = another_ArrayStack._items[i];
+        another_ArrayStack._num_items = 0;
+        another_ArrayStack._items = nullptr;
+        another_ArrayStack._allocated_size = 0;
         std::cout << "Move Constructor" << std::endl;
     }
 
     // Move assignment operator
     ArrayStack& operator= (ArrayStack&& stack){
         std::cout << "Move Assignment Operator" << std::endl;
-        if(this == &stack) return *this;  //Self assignment
-        _num_items = stack._num_items;
         delete[] _items;
-        _items = new int[stack._allocated_size];
+        _num_items = stack._num_items;
+        _items = stack._items;
         _allocated_size = stack._allocated_size;
+
+        stack._num_items = 0;
+        stack._items = nullptr;
+        stack._allocated_size = 0;
+        
         return *this;
     }
 
