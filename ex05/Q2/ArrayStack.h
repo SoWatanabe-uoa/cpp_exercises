@@ -50,15 +50,18 @@ class ArrayStack {
     }
 
     // Assignment operator
-    ArrayStack& operator= (const ArrayStack& stack){
+   ArrayStack& operator= (const ArrayStack& stack){  
         std::cout << "Assignment Operator" << std::endl;
         if(this == &stack) return *this;  //Self assignment
-        _num_items = stack._num_items;
         delete[] _items;
+        _num_items = stack._num_items;
         _items = new int[stack._allocated_size];
+        for(int i=0; i < stack._num_items; i++){
+               _items[i] = stack._items[i];
+        }
         _allocated_size = stack._allocated_size;
         return *this;
-    }
+}
 
     // Destructor::
     ~ArrayStack() {
