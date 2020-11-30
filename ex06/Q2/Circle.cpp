@@ -12,6 +12,6 @@ float Circle::compute_area() const {
 }
 
 void Circle::translate(float tx, float ty) {
-    center.set_x(center.get_x() + tx);
-    center.set_y(center.get_y() + ty);
+    center.set_x(tx);
+    center.set_y(ty);
 }
