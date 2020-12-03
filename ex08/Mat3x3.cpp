@@ -42,7 +42,7 @@ const Mat3x3 Mat3x3::operator-() {
     return result;
 }
 
-double& Mat3x3::operator() (int i,int j){
+const double& Mat3x3::operator() (const int& i,const int& j) const {
     return entries[i][j];
 }
 
