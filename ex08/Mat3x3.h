@@ -14,7 +14,8 @@ class Mat3x3 {
     Mat3x3& operator-= (const Mat3x3&);
     Mat3x3& operator*= (const Mat3x3&);
     const Mat3x3 operator-();
-    const double& operator() (const int&, const int&) const;
+    double& operator() (int, int);
+    const double& operator() (int, int) const;
     bool operator== (const Mat3x3&) const;
     friend ostream& operator<< (ostream& os, const Mat3x3& m);
     
